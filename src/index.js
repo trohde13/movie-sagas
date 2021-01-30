@@ -11,8 +11,8 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
-// Create the rootSaga generator function
-function* rootSaga() {
+// Create the watcherSaga generator function
+function* watcherSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
 }
 
@@ -63,7 +63,7 @@ const storeInstance = createStore(
 );
 
 // Pass rootSaga into our sagaMiddleware
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(watcherSaga);
 
 ReactDOM.render(
     <React.StrictMode>
