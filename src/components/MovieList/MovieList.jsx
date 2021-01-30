@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import purple from '@material-ui/core/colors/purple';
 import './MovieList.css'
 
 function MovieList() {

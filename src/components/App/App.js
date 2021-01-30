@@ -3,6 +3,7 @@ import './App.css';
 import { Container } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import purple from '@material-ui/core/colors/purple';
 import MovieList from '../MovieList/MovieList';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import AddMovie from '../AddMovie/AddMovie';
@@ -12,6 +13,12 @@ function App() {
   const darkTheme = createMuiTheme({
     palette: {
       type: 'dark',
+      primary: {
+        main: purple[500],
+      },
+      secondary: {
+        main: '#dd33fa',
+      }
     },
   });
 
