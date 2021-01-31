@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { Box, Grid, Typography, FormControl, Input, InputLabel, Select, NativeSelect, OutlinedInput, TextField, Button, ButtonGroup, IconButton, Divider } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { Box, Menu, MenuItem, Grid, Typography, FormControl, Input, InputLabel, Select, NativeSelect, OutlinedInput, TextField, Button, ButtonGroup, IconButton, Divider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import purple from '@material-ui/core/colors/purple';
@@ -16,7 +16,12 @@ function AddMovie() {
 
     const [movieTitle, setMovieTitle] = useState('');
     const [movieImage, setMovieImage] = useState('');
+    const [anchorEl, setAnchorEl] = useState(null);
     const [genre, setGenre] = useState('');
+
+    const genreList = useSelector((store) => store.genresReducer)
+
+    useEffect(() => dispatch({ type: 'GET_GENRES' }), []);
 
     //function to add new movie to database and return to movie list
     const handleAddMovie = () => {
@@ -31,7 +36,11 @@ function AddMovie() {
     //function to cancel adding a movie and return to movie list
     const sendHome = () => {
         history.push('/');
-    }
+    }; //end sendHome
+
+    const handleOpenMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    }; //end handleOpenMenu
 
 
 
@@ -39,30 +48,64 @@ function AddMovie() {
 
     return (
         <div>
-            
-            <Box p={4}>
+            <h1 className="movieHeader">Add A Movie</h1>
+            <Box p={4} className="formBox">
                 <form onSubmit={handleAddMovie}>
                     <Box display="flex" alignItems="center" justifyContent="center">
                         <Box mx={2} flexGrow={1}>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">movie title</InputLabel>
-                            <OutlinedInput id="component-outlined" type="text" value={movieTitle} onChange={(event) => setMovieTitle(event.target.value)} variant="outlined" />
+                            <OutlinedInput 
+                                id="component-outlined" 
+                                type="text" 
+                                size="large"
+                                value={movieTitle} 
+                                onChange={(event) => setMovieTitle(event.target.value)} 
+                                variant="outlined" />
                         </FormControl>
                         </Box>
                         <Box mx={2} flexGrow={1}>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">movie url</InputLabel>
-                            <OutlinedInput id="component-outlined" type="text" value={movieImage} onChange={(event) => setMovieImage(event.target.value)} variant="outlined" />
+                            <OutlinedInput 
+                                id="component-outlined" 
+                                type="text" 
+                                value={movieImage} 
+                                onChange={(event) => setMovieImage(event.target.value)} 
+                                variant="outlined" />
                         </FormControl>
                         </Box>
                         <Box mx={2} flexGrow={1}> 
                         <FormControl variant="outlined">
-                            <TextField id="outlined-basic" label="description"  variant="outlined" />
+                            <TextField 
+                                id="outlined-basic"
+                                size="large" 
+                                label="description"  
+                                variant="outlined" />
                         </FormControl>
                         </Box>
                         <Box mx={2} flexGrow={1}>
-                        <FormControl variant="oulined">
-                            <InputLabel htmlFor="component-outlined">Genre</InputLabel>
+                            <Button onClick={handleOpenMenu}>
+                                Genres
+                             </Button>
+                            <Menu
+                                anchorEl={anchorEl}
+                                keepMounted
+                                open={Boolean(anchorEl)}
+                                onClose={() => setAnchorEl(null)}
+                             >
+                                <MenuItem onClick={() => setGenre(null)}>
+                                    <em>none</em>
+                                </MenuItem>
+                                {genreList.map((genreItem) => {
+                                    return (
+                                        <MenuItem onClick={() => setGenre(genreItem.id)}>
+                                            {genreItem.name}
+                                        </MenuItem>
+                                    );
+                                })}
+                                
+                            {/* <InputLabel htmlFor="component-outlined">Genre</InputLabel>
                             <Select
                                 variant="outlined"
                                 value={genre}
@@ -83,22 +126,21 @@ function AddMovie() {
                                 <option value={'Science Fiction'}>Science Fiction</option>
                                 <option value={'Space-Opera'}>Space-Opera</option>
                                 <option value={'Superhero'}>Superhero</option>
-                            </Select>
-                        </FormControl>
+                            </Select> */}
+                        </Menu>
                         </Box>
                         <Box>
-                        <ButtonGroup>
+                        <ButtonGroup orientation="vertical">
                             <Button
                             size="large"
                             variant="contained"
-                            color="secondary"
                             onClick={sendHome}>
                                 CANCEL
                             </Button>
                             <Button
                             size="large"
                             variant="contained"
-                            color="primary"
+                            hover=""
                             onClick={handleAddMovie}>
                                 SAVE
                             </Button>

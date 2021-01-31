@@ -17,12 +17,18 @@
 
 ## CLIENT SIDE
 - [ ] Add component for Add Movie Page
-    - [ ] Input Field (movie title)
-    - [ ] Input Field (movie poster image URL)
-    - [ ] Text Area (movie description)
-    - [ ] Dropdown (for genres)
-    - [ ] "Cancel" Button, returns user to Home/List Page
-    - [ ] "Save" Button, updates the title/ description to database, returns user to Home/List Page (which now has new movie)
+    - [x] Input Field (movie title)
+    - [ ] functions
+    - [x] Input Field (movie poster image URL)
+    - [ ] functions
+    - [x] Text Area (movie description)
+    - [ ] functions
+    - [x] Dropdown (for genres)
+    - [ ] functions
+    - [x] "Cancel" Button, returns user to Home/List Page
+    - [ ] functions
+    - [x] "Save" Button, updates the title/ description to database, returns user to Home/List Page (which now has new movie)
+    - [ ] functions
 - [ ] Add component for Details Page
     - [ ] Should show details including ALL genres for selected movie (this data should be stored in Redux)
     - [ ] "Back to List" Button, returns to Home/List Page

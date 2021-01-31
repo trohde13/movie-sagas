@@ -1,3 +1,14 @@
+body {
+  background: black;
+  background-image: url("neon.png");
+  background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  background-size: cover;
+
+}
+
 .App {
   text-align: center;
 }
@@ -22,3 +33,51 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.movieCard {
+  width: 300px;
+  height: 450px;
+  color: #f729e5;
+  border-style: double;
+  border-color: #f729e5;
+  border-radius: 3px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  box-shadow: 0 10px 20px black;
+}
+
+.movieHeader {
+  background: black;
+  color: #f729e5;
+  text-shadow: 2px 2px 4px white;
+  padding: 6px;
+  border-style: double;
+  border-color: #f729e5;
+  border-radius: 3px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  box-shadow: 0 10px 20px black;
+}
+
+.appHeader {
+  background: black;
+  color: #f729e5;
+  text-shadow: 2px 2px 4px white;
+  width: 100%;
+  padding: 6px;
+  border-style: double;
+  border-color: #f729e5;
+  border-radius: 3px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  box-shadow: 0 10px 20px black;
+}
+
+.formBox {
+  background: #f729e5;
+  border-radius: 3px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  box-shadow: 0 10px 20px black;
+}
+

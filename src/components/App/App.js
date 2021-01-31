@@ -3,7 +3,7 @@ import './App.css';
 import { Container, Paper, Grid } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { purple } from '@material-ui/core/colors/purple';
+import purple from '@material-ui/core/colors/purple';
 import MovieList from '../MovieList/MovieList';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import AddMovie from '../AddMovie/AddMovie';
@@ -40,7 +40,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Container maxWidth="md">
       <div className="App">
-        <h1>The Movies Saga!</h1>
+        <h1 className="appHeader">The Movies Saga!</h1>
         <Router>  
           <Container maxWidth="lg">      
             <Route path="/" exact>

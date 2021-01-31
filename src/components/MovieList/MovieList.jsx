@@ -24,7 +24,7 @@ import './MovieList.css'
 function MovieList() {
 
     const dispatch = useDispatch();
-    const movies = useSelector(store => store.movies);
+    const movies = useSelector(store => store.moviesReducer);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -32,21 +32,21 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
+            <h1 className="movieHeader">Now Playing!</h1>
             <Grid container spacing={4} justify="center" className="movies">
                 {movies.map(movie => {
                     return (
                         <Grid item key={movie.id} >
-                            <Card elevation={4}>
+                            <Card elevation={4} align="center" className="movieCard">
                                 <CardContent>
-                                    <Box minHeight={4}>
+                                    <Box minHeight={2} maxWidth={200}>
                                         <Typography variant="body1" align="center" >
                                             <h3>{movie.title}</h3>
                                         </Typography>
                                     </Box>
                                 </CardContent>
                                 <CardActionArea>
-                                    <Box paddingTop={2} paddingLeft={4} paddingRight={4} paddingBottom={4}></Box>
+                                    <Box paddingTop={1} paddingLeft={4} paddingRight={4} paddingBottom={2}></Box>
                                         <img src={movie.poster} alt={movie.title}/>
                                     {/* </Box> */}
                                 </CardActionArea>

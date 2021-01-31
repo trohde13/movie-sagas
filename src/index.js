@@ -10,6 +10,7 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
+import { AspectRatioSharp } from '@material-ui/icons';
 
 
 
@@ -17,7 +18,7 @@ import axios from 'axios';
 
 
 // Used to store movies returned from the server
-const movies = (state = [], action) => {
+const moviesReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
             return action.payload;
@@ -27,18 +28,18 @@ const movies = (state = [], action) => {
 }
 
 // Used to store the movie genres
-const genres = (state = [], action) => {
+const genresReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
             return action.payload;
         default:
             return state;
     }
-}
+}; //end genres
 
 
 //SAGAS
-
+//generator function to GET all movies
 function* fetchAllMovies() {
     // get all movies from the DB
     try {
@@ -50,12 +51,27 @@ function* fetchAllMovies() {
         console.log('get all error');
     }
         
-}
+}; //end fetchAllMovies
+
+//generator function to GET all genres
+function* getGenres() {
+    try {
+        const response = yield axios.get('/api/genre');
+        yield put({ type: 'SET_GENRES', payload: response.data })
+    } catch (error) {
+        console.log('error isn getting the genres', error);
+    }
+}; //end getGenres
+
+
 
 
 // Create the watcherSaga generator function
 function* watcherSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+    yield takeEvery('GET_GENRES', getGenres);
+
+
 }
 
 // Create sagaMiddleware
@@ -64,8 +80,8 @@ const sagaMiddleware = createSagaMiddleware();
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
-        movies,
-        genres,
+        moviesReducer,
+        genresReducer,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
