@@ -63,6 +63,19 @@ function* getGenres() {
     }
 }; //end getGenres
 
+//generator function to POST new movie to database
+function* addNewMovie(action) {
+    try {
+       console.log('post new movie');
+       const newMovie = action.payload;
+       yield axios.post('/api/movie', newMovie);
+       yield put({ type: 'FETCH_MOVIES', payload: response.data}) 
+    } catch (error) {
+        console.log('erorr in adding a new movie');
+    }
+
+}; // end addNewMovie
+
 
 
 
@@ -70,6 +83,7 @@ function* getGenres() {
 function* watcherSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('GET_GENRES', getGenres);
+    yield takeEvery('ADD_NEW_MOVIE', addNewMovie);
 
 
 }
