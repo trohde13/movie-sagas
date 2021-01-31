@@ -1,6 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import purple from '@material-ui/core/colors/purple';
+import {
+    Box,
+    Button,
+    Card,
+    CardActionArea,
+    CardActions,
+    CardContent,
+    IconButton,
+    Menu,
+    MenuItem,
+    Typography,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    TextField,
+  } from '@material-ui/core';
+
+import { Grid } from '@material-ui/core';
 import './MovieList.css'
 
 function MovieList() {
@@ -15,16 +33,28 @@ function MovieList() {
     return (
         <main>
             <h1>MovieList</h1>
-            <section className="movies">
+            <Grid container spacing={4} justify="center" className="movies">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
-                        </div>
+                        <Grid item key={movie.id} >
+                            <Card elevation={4}>
+                                <CardContent>
+                                    <Box minHeight={4}>
+                                        <Typography variant="body1" align="center" >
+                                            <h3>{movie.title}</h3>
+                                        </Typography>
+                                    </Box>
+                                </CardContent>
+                                <CardActionArea>
+                                    <Box paddingTop={2} paddingLeft={4} paddingRight={4} paddingBottom={4}></Box>
+                                        <img src={movie.poster} alt={movie.title}/>
+                                    {/* </Box> */}
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
                     );
                 })}
-            </section>
+            </Grid>
         </main>
 
     );

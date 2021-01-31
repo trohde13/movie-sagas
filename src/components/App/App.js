@@ -1,46 +1,64 @@
 import {HashRouter as Router, Route} from 'react-router-dom';
 import './App.css';
-import { Container } from '@material-ui/core';
+import { Container, Paper, Grid } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import purple from '@material-ui/core/colors/purple';
+import { purple } from '@material-ui/core/colors/purple';
 import MovieList from '../MovieList/MovieList';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import AddMovie from '../AddMovie/AddMovie';
 
 function App() {
 
-  const darkTheme = createMuiTheme({
+  const theme = createMuiTheme({
     palette: {
-      type: 'dark',
+      common: {
+        black: '#000',
+        white: '#fff',
+      },
+      // type: "dark",
       primary: {
-        main: purple[500],
+        light: '#7986cb',
+        main: '#3f51b5',
+        dark: '#303f9f',
+        contrastText:' #ffffff',
       },
       secondary: {
-        main: '#dd33fa',
-      }
+        light: '#ff4081',
+        main: '#f50057',
+        dark: '#c51162',
+        contrastText:' #ffffff',
+      },
+      background: {
+        paper: '#424242',
+        default: '#303030',
+      },
     },
   });
 
   return (
-    <div className="App">
-      <h1>The Movies Saga!</h1>
-      <Router>  
-        <Container maxWidth="lg">      
-          <Route path="/" exact>
-            <MovieList />
-          </Route>        
-        {/* Details page */}
-          <Route path="/details">
-            <MovieDetails />
-          </Route>
-        {/* Add Movie page */}
-          <Route path="/addmovie">
-            <AddMovie />
-          </Route>
-        </Container>
-      </Router>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container maxWidth="md">
+      <div className="App">
+        <h1>The Movies Saga!</h1>
+        <Router>  
+          <Container maxWidth="lg">      
+            <Route path="/" exact>
+              <MovieList />
+            </Route>        
+          {/* Details page */}
+            <Route path="/details">
+              <MovieDetails />
+            </Route>
+          {/* Add Movie page */}
+            <Route path="/addmovie">
+              <AddMovie />
+            </Route>
+          </Container>
+        </Router>
+      </div>
+      </Container>
+    </ThemeProvider>
   );
 }
 
