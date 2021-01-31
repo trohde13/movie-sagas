@@ -61,7 +61,7 @@ function MovieList(movie) {
                             <Card elevation={4} align="center" className="movieCard">
                                 <CardContent>
                                     <Box minHeight={2} maxWidth={200}>
-                                        <Typography variant="body1" align="center" >
+                                        <Typography variant="body1" align="center" color="secondary">
                                             <h3>{movie.title}</h3>
                                         </Typography>
                                     </Box>

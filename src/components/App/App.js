@@ -18,7 +18,7 @@ function App() {
         
       },
       secondary: {
-        main: '#f50057',
+        main: '#f729e5',
         
       },
       background: {
