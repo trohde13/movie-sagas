@@ -36,9 +36,10 @@ function MovieList(movie) {
         history.push('/addmovie');
     };
 
-    const getMovieInfo = () => {
-        dispatch({ type: 'FETCH_INFO', payload: movie.id})
-        history.push('/details');
+    const getMovieInfo = (id) => {
+        event.preventDefault();
+        dispatch({ type: 'FETCH_INFO', payload: id})
+        history.push(`/details/${id}`);
     }
 
     return (
@@ -70,7 +71,7 @@ function MovieList(movie) {
                                         <img 
                                         src={movie.poster} 
                                         alt={movie.title}
-                                        onClick={getMovieInfo}
+                                        onClick={() => getMovieInfo(movie.id)}
                                         />
                                     {/* </Box> */}
                                 </CardActionArea>

@@ -12,22 +12,14 @@ function App() {
 
   const theme = createMuiTheme({
     palette: {
-      common: {
-        black: '#000',
-        white: '#fff',
-      },
-      // type: "dark",
+      
       primary: {
-        light: '#7986cb',
         main: '#3f51b5',
-        dark: '#303f9f',
-        contrastText:' #ffffff',
+        
       },
       secondary: {
-        light: '#ff4081',
         main: '#f50057',
-        dark: '#c51162',
-        contrastText:' #ffffff',
+        
       },
       background: {
         paper: '#424242',
@@ -47,7 +39,7 @@ function App() {
               <MovieList />
             </Route>        
           {/* Details page */}
-            <Route path="/details">
+            <Route path="/details/:id">
               <MovieDetails />
             </Route>
           {/* Add Movie page */}

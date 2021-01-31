@@ -89,8 +89,9 @@ function* addNewMovie(action) {
 //generator function to GET movie details from database
 function* fetchInfo(action) {
     try {
-        const response = yield axios.get('/api/movie', action.payload);
-        console.log('get movie by id:', movies.data);
+        console.log('made it to fetchInfo Saga');
+        const response = yield axios.get(`/api/movie/${action.payload}`);
+        console.log('get movie by id:', response.data);
         yield put({ type: 'SET_DETAILS', payload: response.data });
 
     } catch (error) {

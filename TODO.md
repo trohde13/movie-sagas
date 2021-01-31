@@ -5,9 +5,9 @@
 - [ ] P1: Need to add a new movie
 - [ ] Home/List: When a poster is clicked, user should be directed to /details view for that movie
 - [ ] Home/List: Create a way to get to Add Movie Page
-- [ ] Add style
-    - [ ] Material-UI cards for Posters on Movie List Page
-    - [ ] Material-UI grids for posters on Movie List Page
+- [x] Add style
+    - [x] Material-UI cards for Posters on Movie List Page
+    - [x] Material-UI grids for posters on Movie List Page
 - [ ] COMMENT CODE
 - [ ] Commit more than 15 times!
 
@@ -31,7 +31,7 @@
     - [ ] functions
 - [ ] Add component for Details Page
     - [ ] Should show details including ALL genres for selected movie (this data should be stored in Redux)
-    - [ ] "Back to List" Button, returns to Home/List Page
+    - [x] "Back to List" Button, returns to Home/List Page
 
 
 
