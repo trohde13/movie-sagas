@@ -13,20 +13,40 @@ function AddMovie() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [movieTitle, setMovieTitle] = useState('');
-    const [movieImage, setMovieImage] = useState('');
-    const [description, setDescription] = useState('');
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [genre, setGenre] = useState('');
-
     const genreList = useSelector((store) => store.genresReducer)
 
+    const [newMovie, setNewMovie] = useState({
+        title: '',
+        poster: '',
+        description: '',
+        genre_id: ''
+    })
+
+    //pulling in genre data
     useEffect(() => {
         dispatch({ type: 'GET_GENRES' })
     }, []);
 
 
-    
+    //function to update state from input fields
+    const handleChange = (key, event) => {
+        console.log('in handleChange')
+
+        switch(key){
+            case 'title':
+                setNewMovie({...newMovie, title: event.target.value})
+                break;
+            case 'poster':
+                setNewMovie({...newMovie, poster: event.target.value})
+                break;
+            case 'description':
+                setNewMovie({...newMovie, description: event.target.value})
+                break;
+            case 'genre':
+                setNewMovie({...newMovie, genre_id: event.target.value})
+                break;
+        }
+    }
 
     //function to add new movie to database and return to movie list
     const handleAddMovie = (event) => {
@@ -35,63 +55,25 @@ function AddMovie() {
         //dispatch here
         dispatch({ 
             type: 'ADD_NEW_MOVIE', 
-            payload: {movieTitle, movieImage, description, genre} 
+            payload: newMovie 
         });
-        setMovieTitle('');
-        setMovieImage('');
-        setDescription('');
+        setNewMovie({
+            title: '',
+            poster: '',
+            description: '',
+            genre_id: ''
+        })
+
         history.push('/');
     }; //end handleAddMovie
 
-    const handleTitle = (event) => {
-        event.preventDefault();
-        console.log('in handleTitle', {movieTitle});
-        dispatch({
-            type: 'SET_MOVIE_TITLE',
-            payload: movieTitle
-        })
-
-    }; //end handleTitle
-
-    const handleImage = (event) => {
-        event.preventDefault();
-        console.log('in handleImage', {movieImage});
-        dispatch({
-            type: 'SET_MOVIE_URL',
-            payload: movieImage
-        })
-
-    }; //end handleImage
-
-    const handleDescription = (event) => {
-        event.preventDefault();
-        console.log('in handleDescription', {description});
-        dispatch({
-            type: 'SET_DESCRIPTION',
-            payload: description
-        })
-
-    }; //end handleDescription
-
-    const handleGenre = (event) => {
-        event.preventDefault();
-        console.log('in handleGenre', {genre});
-        dispatch({ 
-            type: 'SET_GENRE',
-            payload: genre
-         })
-    }; //end handleGenre
-
+    
     //function to cancel adding a movie and return to movie list
     const sendHome = () => {
         history.push('/');
     }; //end sendHome
 
-    const handleOpenMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    }; //end handleOpenMenu
-
-    
+ 
 
 
     return (
@@ -104,11 +86,11 @@ function AddMovie() {
                         <FormControl variant="outlined">
                             <TextField  
                                 id="outlined-basic" 
-                                //type="text" 
+                                type="text" 
                                 size="large"
                                 label="movie title"
-                                value={movieTitle} 
-                                onChange={(event) => setMovieTitle(event.target.value)} 
+                                value={newMovie.title} 
+                                onChange={(event) => handleChange('title', event)} 
                                 variant="outlined" />
                         </FormControl>
                         </Box>
@@ -116,10 +98,11 @@ function AddMovie() {
                         <FormControl variant="outlined">
                             <TextField  
                                 id="outlined-basic"
-                                //type="text"
+                                size="large"
+                                type="text"
                                 label="movie url" 
-                                value={movieImage} 
-                                onChange={(event) => setMovieImage(event.target.value)} 
+                                value={newMovie.poster} 
+                                onChange={(event) => handleChange('poster', event)} 
                                 variant="outlined" />
                         </FormControl>
                         </Box>
@@ -128,32 +111,30 @@ function AddMovie() {
                             <TextField 
                                 id="outlined-basic"
                                 size="large" 
+                                type="text"
                                 label="description"  
                                 variant="outlined"
-                                value={description}
-                                onChange={(event) => setDescription(event.target.value)} />
+                                value={newMovie.description}
+                                onChange={(event) => handleChange('description', event)} />
                         </FormControl>
                         </Box>
                         <Box mx={2} flexGrow={1}>
-                            <Button variant="outlined" onClick={handleOpenMenu}>
-                                Genres
-                             </Button>
-                            <Menu
-                                anchorEl={anchorEl}
-                                keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={() => setAnchorEl(null)}
-                             >
-                                <MenuItem onClick={() => setGenre(null)}>
-                                    <em>none</em>
-                                </MenuItem>
-                                {genreList.map((genreItem) => {
+                            <label htmlFor="genre">Genre:</label>
+                            <Select
+                                name="genre"
+                                id="genre"
+                                value={newMovie.genre}
+                                onChange={(event) =>handleChange('genre', event)}>
+                                    <option value="" disabled>Choose genre:</option>
+                                {genreList.map((genre) => {
                                     return (
-                                        <MenuItem onClick={() => setGenre(genreItem.id)}>
-                                            {genreItem.name}
-                                        </MenuItem>
-                                    );
-                                })}
+                                        <option value={genre.id} key={genre.id}>{genre.name}</option>
+                                        );
+                                    })}
+                            </Select>
+                                
+                                                            
+                                
                                 
                             {/* <InputLabel htmlFor="component-outlined">Genre</InputLabel>
                             <Select
@@ -177,7 +158,7 @@ function AddMovie() {
                                 <option value={'Space-Opera'}>Space-Opera</option>
                                 <option value={'Superhero'}>Superhero</option>
                             </Select> */}
-                        </Menu>
+                        
                         </Box>
                         <Box>
                         <ButtonGroup orientation="vertical">
