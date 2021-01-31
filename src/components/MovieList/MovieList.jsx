@@ -19,10 +19,12 @@ import {
   } from '@material-ui/core';
 
 import { Grid } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import './MovieList.css'
 
-function MovieList() {
+function MovieList(movie) {
 
+    const history = useHistory();
     const dispatch = useDispatch();
     const movies = useSelector(store => store.moviesReducer);
 
@@ -32,6 +34,11 @@ function MovieList() {
 
     const addMovieBtn = () => {
         history.push('/addmovie');
+    };
+
+    const getMovieInfo = () => {
+        dispatch({ type: 'FETCH_INFO', payload: movie.id})
+        history.push('/details');
     }
 
     return (
@@ -60,7 +67,11 @@ function MovieList() {
                                 </CardContent>
                                 <CardActionArea>
                                     <Box paddingTop={1} paddingLeft={4} paddingRight={4} paddingBottom={2}></Box>
-                                        <img src={movie.poster} alt={movie.title}/>
+                                        <img 
+                                        src={movie.poster} 
+                                        alt={movie.title}
+                                        onClick={getMovieInfo}
+                                        />
                                     {/* </Box> */}
                                 </CardActionArea>
                             </Card>

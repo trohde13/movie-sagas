@@ -25,7 +25,7 @@ const moviesReducer = (state = [], action) => {
         default:
             return state;
     }
-}
+}; //end moviesReducer
 
 // Used to store the movie genres
 const genresReducer = (state = [], action) => {
@@ -35,7 +35,17 @@ const genresReducer = (state = [], action) => {
         default:
             return state;
     }
-}; //end genres
+}; //end genresReducer
+
+// Used to store the movie details
+const movieDetails = (state = [], action) => {
+    switch(action.type) {
+        case 'SET_DETAILS':
+            return action.payload;
+        default:
+            return state;
+    }
+}; //end movieDetails
 
 
 //SAGAS
@@ -69,12 +79,26 @@ function* addNewMovie(action) {
        console.log('post new movie');
        const newMovie = action.payload;
        yield axios.post('/api/movie', newMovie);
-       yield put({ type: 'FETCH_MOVIES', payload: response.data}) 
+       yield put({ payload: action.payload }) 
     } catch (error) {
-        console.log('erorr in adding a new movie');
+        console.log('error in adding a new movie', error);
     }
 
 }; // end addNewMovie
+
+//generator function to GET movie details from database
+function* fetchInfo(action) {
+    try {
+        const response = yield axios.get('/api/movie', action.payload);
+        console.log('get movie by id:', movies.data);
+        yield put({ type: 'SET_DETAILS', payload: response.data });
+
+    } catch (error) {
+        console.log('error in getting details', error);
+    }
+        
+}; //end fetchInfo
+
 
 
 
@@ -84,7 +108,7 @@ function* watcherSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('GET_GENRES', getGenres);
     yield takeEvery('ADD_NEW_MOVIE', addNewMovie);
-
+    yield takeEvery('FETCH_INFO', fetchInfo)
 
 }
 
@@ -96,6 +120,7 @@ const storeInstance = createStore(
     combineReducers({
         moviesReducer,
         genresReducer,
+        movieDetails
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

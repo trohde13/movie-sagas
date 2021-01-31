@@ -21,7 +21,12 @@ function AddMovie() {
 
     const genreList = useSelector((store) => store.genresReducer)
 
-    useEffect(() => dispatch({ type: 'GET_GENRES' }), []);
+    useEffect(() => {
+        dispatch({ type: 'GET_GENRES' })
+    }, []);
+
+
+    
 
     //function to add new movie to database and return to movie list
     const handleAddMovie = (event) => {
@@ -38,6 +43,45 @@ function AddMovie() {
         history.push('/');
     }; //end handleAddMovie
 
+    const handleTitle = (event) => {
+        event.preventDefault();
+        console.log('in handleTitle', {movieTitle});
+        dispatch({
+            type: 'SET_MOVIE_TITLE',
+            payload: movieTitle
+        })
+
+    }; //end handleTitle
+
+    const handleImage = (event) => {
+        event.preventDefault();
+        console.log('in handleImage', {movieImage});
+        dispatch({
+            type: 'SET_MOVIE_URL',
+            payload: movieImage
+        })
+
+    }; //end handleImage
+
+    const handleDescription = (event) => {
+        event.preventDefault();
+        console.log('in handleDescription', {description});
+        dispatch({
+            type: 'SET_DESCRIPTION',
+            payload: description
+        })
+
+    }; //end handleDescription
+
+    const handleGenre = (event) => {
+        event.preventDefault();
+        console.log('in handleGenre', {genre});
+        dispatch({ 
+            type: 'SET_GENRE',
+            payload: genre
+         })
+    }; //end handleGenre
+
     //function to cancel adding a movie and return to movie list
     const sendHome = () => {
         history.push('/');
@@ -47,13 +91,7 @@ function AddMovie() {
         setAnchorEl(event.currentTarget);
     }; //end handleOpenMenu
 
-    const addGenre = (genreId) => {
-        dispatch({ 
-            type: 'ADD_NEW_MOVIE',
-            payload: { }
-         })
-    }
-
+    
 
 
     return (
@@ -66,10 +104,10 @@ function AddMovie() {
                         <FormControl variant="outlined">
                             <TextField  
                                 id="outlined-basic" 
-                                type="text" 
+                                //type="text" 
                                 size="large"
                                 label="movie title"
-                                // value={movieTitle} 
+                                value={movieTitle} 
                                 onChange={(event) => setMovieTitle(event.target.value)} 
                                 variant="outlined" />
                         </FormControl>
@@ -78,9 +116,9 @@ function AddMovie() {
                         <FormControl variant="outlined">
                             <TextField  
                                 id="outlined-basic"
-                                type="text"
+                                //type="text"
                                 label="movie url" 
-                                // value={movieImage} 
+                                value={movieImage} 
                                 onChange={(event) => setMovieImage(event.target.value)} 
                                 variant="outlined" />
                         </FormControl>
@@ -92,6 +130,7 @@ function AddMovie() {
                                 size="large" 
                                 label="description"  
                                 variant="outlined"
+                                value={description}
                                 onChange={(event) => setDescription(event.target.value)} />
                         </FormControl>
                         </Box>
@@ -105,12 +144,12 @@ function AddMovie() {
                                 open={Boolean(anchorEl)}
                                 onClose={() => setAnchorEl(null)}
                              >
-                                <MenuItem onClick={() => addGenre(null)}>
+                                <MenuItem onClick={() => setGenre(null)}>
                                     <em>none</em>
                                 </MenuItem>
                                 {genreList.map((genreItem) => {
                                     return (
-                                        <MenuItem onClick={() => addGenre(genreItem.id)}>
+                                        <MenuItem onClick={() => setGenre(genreItem.id)}>
                                             {genreItem.name}
                                         </MenuItem>
                                     );

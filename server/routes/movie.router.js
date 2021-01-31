@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+//GET route to select all movies to map for MovieList
 router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
@@ -16,6 +17,29 @@ router.get('/', (req, res) => {
 
 });
 
+//GET route to get movie description & genre for MovieDetails
+router.get('/', (req,res) => {
+
+  const queryText = `SELECT "movies".title, "movies".poster, "movies".description, "genres".name
+                  FROM "movies"
+                  JOIN "movies_genres" ON "movies".id = "movies_genres".movie_id
+                  JOIN "genres" ON "genres".id = "movies_genres".genre_id;`;
+  pool.query(queryText)
+      .then((result) => {
+        console.log(result.rows);
+        res.send(result.rows)
+      })
+      .catch((error) => {
+        console.log('error getting description details', error);
+        res.sendStatus(500);
+      })
+});
+
+
+
+
+
+//POST route to add a new movie to database
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
