@@ -1,15 +1,15 @@
 ## GENERAL
-- [ ] README
-- [ ] SQL Practice Assignments
+- [x] README
+- [x] SQL Practice Assignments
 - [ ] P1: Need to see detailed view for each movie
-- [ ] P1: Need to add a new movie
-- [ ] Home/List: When a poster is clicked, user should be directed to /details view for that movie
-- [ ] Home/List: Create a way to get to Add Movie Page
+- [x] P1: Need to add a new movie
+- [x] Home/List: When a poster is clicked, user should be directed to /details view for that movie
+- [x] Home/List: Create a way to get to Add Movie Page
 - [x] Add style
     - [x] Material-UI cards for Posters on Movie List Page
     - [x] Material-UI grids for posters on Movie List Page
-- [ ] COMMENT CODE
-- [ ] Commit more than 15 times!
+- [x] COMMENT CODE
+- [x] Commit more than 15 times!
 
 ## DATABASE
 - [x] Create database: saga_movies_weekend
