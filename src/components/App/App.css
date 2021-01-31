@@ -81,3 +81,6 @@ body {
   box-shadow: 0 10px 20px black;
 }
 
+.addMovieBtn {
+  margin-bottom : 20px;
+}

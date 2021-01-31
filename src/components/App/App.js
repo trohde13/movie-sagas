@@ -40,7 +40,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Container maxWidth="md">
       <div className="App">
-        <h1 className="appHeader">The Movies Saga!</h1>
+        <h1 className="appHeader">Neon Cinema</h1>
         <Router>  
           <Container maxWidth="lg">      
             <Route path="/" exact>

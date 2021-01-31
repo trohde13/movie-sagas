@@ -30,9 +30,22 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
+    const addMovieBtn = () => {
+        history.push('/addmovie');
+    }
+
     return (
         <main>
             <h1 className="movieHeader">Now Playing!</h1>
+            <div className="addMovieBtn">
+            <Button 
+                variant="contained" 
+                size="large"
+                
+                onClick={addMovieBtn}>
+                    Add A Movie
+            </Button>
+            </div>
             <Grid container spacing={4} justify="center" className="movies">
                 {movies.map(movie => {
                     return (

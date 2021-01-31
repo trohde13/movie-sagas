@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { Box, Menu, MenuItem, Grid, Typography, FormControl, Input, InputLabel, Select, NativeSelect, OutlinedInput, TextField, Button, ButtonGroup, IconButton, Divider } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import purple from '@material-ui/core/colors/purple';
+import { Box, Menu, MenuItem, Grid, Typography, FormControl, Input, InputLabel, Select, NativeSelect, OutlinedInput, TextField, Button, ButtonGroup, Icon, IconButton, Divider } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import SaveIcon from '@material-ui/icons/Save';
 import { ArrowForward, FavoriteBorder, SettingsEthernetRounded } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 
@@ -97,7 +96,7 @@ function AddMovie() {
                         </FormControl>
                         </Box>
                         <Box mx={2} flexGrow={1}>
-                            <Button onClick={handleOpenMenu}>
+                            <Button variant="outlined" onClick={handleOpenMenu}>
                                 Genres
                              </Button>
                             <Menu
@@ -146,13 +145,14 @@ function AddMovie() {
                             <Button
                             size="large"
                             variant="contained"
+                            startIcon={<DeleteIcon />}
                             onClick={sendHome}>
                                 CANCEL
                             </Button>
                             <Button
                             size="large"
                             variant="contained"
-                            hover=""
+                            endIcon={<SaveIcon />}
                             onClick={handleAddMovie}>
                                 SAVE
                             </Button>
