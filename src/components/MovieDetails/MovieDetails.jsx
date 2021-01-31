@@ -51,14 +51,14 @@ function MovieDetails() {
             </Button>
             </div>
             <div>
+            <Grid container spacing={4} justify="center" className="movies"></Grid>
                 {details.map(details => {
+                    <>
                     <h2>{details.title}</h2>
-                    <img 
-                        src={details.poster}
-                        alt={details.title} 
-                    />
+                    <img src={details.poster} alt={details.title} />
                     <h4>Genre: {details.name}</h4>
-                    <body1>{details.description</body1>
+                    <p>{details.description}</p>
+                    </>
                 })}
             </div>
 
