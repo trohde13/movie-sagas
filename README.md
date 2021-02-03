@@ -14,11 +14,11 @@ This is a full-stack application designed to store and display movies. On the ma
 
 ### Add Movie View
 
-![Add Movie View](https://github.com/trohde13/movie-sagas/blob/master/public/images/movie-saga-add.png)
+![Add Movie View](https://github.com/trohde13/movie-sagas/blob/master/public/images/movie-sagas-add.png)
 
 ### Movie Details View
 
-![Movie Details View](https://github.com/trohde13/movie-sagas/blob/master/public/images/movie-saga-details.png)
+![Movie Details View](https://github.com/trohde13/movie-sagas/blob/master/public/images/movie-sagas-details.png)
 
 ### Prerequisites
 
