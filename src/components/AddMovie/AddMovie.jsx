@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { Box, Menu, MenuItem, Grid, Typography, FormControl, Input, InputLabel, Select, NativeSelect, OutlinedInput, TextField, Button, ButtonGroup, Icon, IconButton, Divider } from '@material-ui/core';
+import { Box, FormControl, Select, TextField, Button, ButtonGroup } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
-import { ArrowForward, FavoriteBorder, SettingsEthernetRounded } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 
 function AddMovie() {

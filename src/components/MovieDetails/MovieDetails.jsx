@@ -1,22 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    Box,
-    Button,
-    Card,
-    CardActionArea,
-    CardActions,
-    CardContent,
-    IconButton,
-    Menu,
-    MenuItem,
-    Typography,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-    TextField,
-  } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 import { Grid } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
@@ -28,11 +12,9 @@ function MovieDetails() {
     const history = useHistory();
     const dispatch = useDispatch();
     const details = useSelector(store => store.movieDetails);
+    console.log('showing movie details', details)
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_INFO' });
-    }, []);
-
+    
     //function to return to movie list
     const sendHome = () => {
         history.push('/');
@@ -41,6 +23,8 @@ function MovieDetails() {
     return (
         <div>
             <h1 className="movieHeader">Details</h1>
+
+            {/* button to return to MovieList */}
             <div className="addMovieBtn">
             <Button 
                 variant="contained" 
@@ -50,17 +34,28 @@ function MovieDetails() {
                     Return to Movie List
             </Button>
             </div>
-            <div>
-            <Grid container spacing={4} justify="center" className="movies"></Grid>
-                {details.map(details => {
-                    <>
-                    <h2>{details.title}</h2>
-                    <img src={details.poster} alt={details.title} />
-                    <h4>Genre: {details.name}</h4>
-                    <p>{details.description}</p>
-                    </>
-                })}
-            </div>
+
+
+
+            { details[0] && (
+                <div className="movieDetails">
+                    <Grid container spacing={2} justify="center" className="movies">
+                        <h3> {details[0].title} </h3>
+                        <p> { details[0].description} </p>
+                        <img src={details[0].poster} alt={details[0].title} />
+                        <ul>
+                        {details.map(movie => {
+                            return (
+                                <li>{movie.name}</li>
+                            )
+                        })}
+                        </ul>
+                    </Grid>
+                </div>
+            )}
+
+
+
 
         </div>
     )

@@ -37,25 +37,6 @@ router.get('/:id', (req, res) => {
       })
 });
 
-//Adapted GET route from Mark, same error
-// router.get('/:id', (req, res) => {
-//   const id = req.params.id;
-//   console.log('in server with id:', id);
-//   const queryText = `
-//     SELECT "movies".title, "movies".poster, "movies".description FROM "movies"
-//     WHERE "movies".id = $1;
-//   `
-//   pool.query(queryText, [id]).then((response)=>{
-//     console.log(response);
-//     res.send(response.rows)
-//   }).catch((error)=>{
-//     console.log(error);
-//     res.sendStatus(500);
-//   })
-// })
-
-
-
 
 
 

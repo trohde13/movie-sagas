@@ -17,7 +17,7 @@ import { AspectRatioSharp } from '@material-ui/icons';
 //Reducers
 
 
-// Used to store movies returned from the server
+// Used to store movies returned from the server (/api/movie/)
 const moviesReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
@@ -27,7 +27,7 @@ const moviesReducer = (state = [], action) => {
     }
 }; //end moviesReducer
 
-// Used to store the movie genres
+// Used to store the movie genres (/api/genre)
 const genresReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
@@ -37,7 +37,7 @@ const genresReducer = (state = [], action) => {
     }
 }; //end genresReducer
 
-// Used to store the movie details
+// Used to store the movie details (/api/movie/:id)
 const movieDetails = (state = [], action) => {
     switch(action.type) {
         case 'SET_DETAILS':
@@ -90,8 +90,10 @@ function* addNewMovie(action) {
 function* fetchInfo(action) {
     try {
         console.log('made it to fetchInfo Saga');
+        // get /api/movie/:id
         const response = yield axios.get(`/api/movie/${action.payload}`);
         console.log('get movie by id:', response.data);
+        // sends to reducer with SET_DETAILS
         yield put({ type: 'SET_DETAILS', payload: response.data });
 
     } catch (error) {

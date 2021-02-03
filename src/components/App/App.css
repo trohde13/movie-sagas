@@ -35,8 +35,8 @@ body {
 }
 
 .movieCard {
-  width: 300px;
-  height: 450px;
+  width: 250px;
+  height: 400px;
   color: #f729e5;
   border-style: double;
   border-color: #f729e5;
@@ -84,3 +84,9 @@ body {
 .addMovieBtn {
   margin-bottom : 20px;
 }
+
+.movieDetails {
+  background-color: black;
+  color: #f729e5;
+}
+

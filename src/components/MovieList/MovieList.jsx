@@ -1,21 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    Box,
     Button,
     Card,
     CardActionArea,
-    CardActions,
     CardContent,
-    IconButton,
-    Menu,
-    MenuItem,
     Typography,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-    TextField,
   } from '@material-ui/core';
 
 import { Grid } from '@material-ui/core';
@@ -37,8 +27,10 @@ function MovieList(movie) {
     };
 
     const getMovieInfo = (id) => {
-        event.preventDefault();
+        //event.preventDefault();
         dispatch({ type: 'FETCH_INFO', payload: id})
+
+        //send to /details by id number
         history.push(`/details/${id}`);
     }
 
@@ -54,21 +46,26 @@ function MovieList(movie) {
                     Add A Movie
             </Button>
             </div>
-            <Grid container spacing={4} justify="center" className="movies">
+            <Grid 
+                container
+                spacing={2} 
+                justify="center" 
+                className="movies"
+            >
                 {movies.map(movie => {
                     return (
                         <Grid item key={movie.id} >
-                            <Card elevation={4} align="center" className="movieCard">
+                            <Card align="center" className="movieCard">
                                 <CardContent>
-                                    <Box minHeight={2} maxWidth={200}>
-                                        <Typography variant="body1" align="center" color="secondary">
+                                    {/* <Box minHeight={2} maxWidth={200}> */}
+                                        <Typography variant="body2" align="center" color="secondary">
                                             <h3>{movie.title}</h3>
                                         </Typography>
-                                    </Box>
+                                    {/* </Box> */}
                                 </CardContent>
-                                <CardActionArea>
-                                    <Box paddingTop={1} paddingLeft={4} paddingRight={4} paddingBottom={2}></Box>
-                                        <img 
+                                <CardActionArea className="poster" >
+                                    {/* <Box paddingTop={1} paddingLeft={1} paddingRight={1} paddingBottom={1}></Box> */}
+                                        <img
                                         src={movie.poster} 
                                         alt={movie.title}
                                         onClick={() => getMovieInfo(movie.id)}
