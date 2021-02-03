@@ -8,7 +8,9 @@ This is a full-stack application designed to store and display movies. On the ma
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+![Movie List View](wireframes/movie-saga-list.png)
+![Add Movie View](wireframes/movie-saga-add.png)
+![Movie Details View](wireframes/movie-saga-details.png)
 
 ### Prerequisites
 
