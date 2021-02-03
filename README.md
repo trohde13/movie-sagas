@@ -10,15 +10,15 @@ This is a full-stack application designed to store and display movies. On the ma
 
 ### Movie List View
 
-![Movie List View](/public/images/movie-saga-list.png)
+![Movie List View](movie-sagas/public/images/movie-saga-list.png)
 
 ### Add Movie View
 
-![Add Movie View](/public/images/movie-saga-add.png)
+![Add Movie View](movie-sagas/public/images/movie-saga-add.png)
 
 ### Movie Details View
 
-![Movie Details View](/public/images/movie-saga-details.png)
+![Movie Details View](movie-sagas/public/images/movie-saga-details.png)
 
 ### Prerequisites
 
