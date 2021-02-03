@@ -8,8 +8,16 @@ This is a full-stack application designed to store and display movies. On the ma
 
 ## Screen Shot
 
+### Movie List View
+
 ![Movie List View](wireframes/movie-saga-list.png)
+
+### Add Movie View
+
 ![Add Movie View](wireframes/movie-saga-add.png)
+
+### Movie Details View
+
 ![Movie Details View](wireframes/movie-saga-details.png)
 
 ### Prerequisites
