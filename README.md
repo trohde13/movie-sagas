@@ -10,7 +10,7 @@ This is a full-stack application designed to store and display movies. On the ma
 
 ### Movie List View
 
-![Movie List View](public/images/movie-saga-list.png)
+![Movie List View](https://github.com/trohde13/movie-sagas/blob/master/public/images/movie-sagas-list.png)
 
 ### Add Movie View
 
