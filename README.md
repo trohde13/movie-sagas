@@ -60,4 +60,4 @@ Link to software that is required to install the app (e.g. node).
 - Postgres/Postico
 
 ## Acknowledgement
-Thanks to Mark Koerner and Chris Emerfoll for spotchecking my code and helping me troubleshoot this project, thanks to Kevin Burk for helping me grasp this subject matter this week. Thanks to everyone at [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality, especially my instructor in the Zhu Cohort, Dane Smith.
+Thanks to Mark Koerner and Chris Emerfoll for spotchecking my code and helping me troubleshoot this project, thanks to Kevin Burk for helping me grasp this subject matter this week. Thanks to everyone at [Prime Digital Academy](https://www.primeacademy.io) who equipped and helped me to make this application a reality, especially my instructor in the Zhu Cohort, Dane Smith.
