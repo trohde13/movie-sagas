@@ -32,15 +32,14 @@ Link to software that is required to install the app (e.g. node).
 
 ## Installation
 
-1. Create a database named `your database name`,
-2. The queries in the `tables.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
+1. Create a database named `saga_movies_weekend`,
+2. The queries in the `database.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
 3. Open up your editor of choice and run an `npm install`
 4. Run `npm run server` in your terminal
 5. Run `npm run client` in your terminal
 6. The `npm run client` command will open up a new browser tab for you!
 
 ## Usage
-How does someone use this application? Tell a user story here.
 
 1. Click any image on the main page
 2. You'll be directed to a page with all of the details of that movie. A quick button click and you're back on the main page again.
@@ -61,4 +60,4 @@ How does someone use this application? Tell a user story here.
 - Postgres/Postico
 
 ## Acknowledgement
-Thanks to Mark and Chris for spotchecking my code and helping me troubleshoot this project, thanks to Kevin for helping me grasp this subject matter this week. Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. (Thank your people)
+Thanks to Mark Koerner and Chris Emerfoll for spotchecking my code and helping me troubleshoot this project, thanks to Kevin Burk for helping me grasp this subject matter this week. Thanks to everyone at [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality, especially my instructor in the Zhu Cohort, Dane Smith.
